@@ -11,10 +11,12 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
+
 @app.route('/')
 def health():
     res = {'status': 'UP'}
     return jsonify(res)
+
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -26,20 +28,24 @@ def login():
 
     return jsonify({'token': 'supersecret', 'user':{'name': user.username, 'usertype': user.usertype}}), 200
 
+
 @app.route('/event', methods=['GET'])
 def get_events():
     # get all events
     return jsonify({'status':'success'}), 200
+
 
 @app.route('/event', methods=['POST'])
 def create_event():
     
     return jsonify({'status':'success'}), 201
 
+
 @app.route('/event', methods=['PUT'])
 def edit_event():
 
     return jsonify({'status':'success'}), 200
+
 
 @app.route('/gps', methods=['POST'])
 def gps():
@@ -48,9 +54,11 @@ def gps():
     # respond with any events
     return jsonify({'status':'success'}), 200
 
+
 @app.route('/images/<path:path>', methods=['GET'])
 def get_image(path):
     return send_from_directory('images', path)
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
