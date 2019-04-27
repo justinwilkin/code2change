@@ -10,7 +10,7 @@ import Header from '@/components/Header.vue'
 export default {
   layout: 'default',
   components: {
-    Header
+    Header,
   }
 }
 </script>
