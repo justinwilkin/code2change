@@ -1,17 +1,21 @@
 <template>
   <section class="page" id="page-event-create">
-    <div class="bodyContent">
+    <div class="content">
       <h1>Create an Event</h1>
       <EventDetailsForm v-if="step === 1" :btn-click="onProgress" />
       <div v-if="step === 2">
         <p>Select 4 points to create a zone for people to receive information in</p>
         <LeafletMaps class="map"/>
-        <button @click="onProgress">Review</button>
+        <div class="buttonWrapper">
+          <button @click="onProgress">Review</button>
+        </div>
       </div>
       <div v-if="step === 3">
         <p>Check if these details are correct. Please correct them if they aren’t!</p>
-        <EventDetails :event="event" />
-        <button @click="onSubmit">Submit</button>
+        <div class="bodyContent">
+          <EventDetails :event="event" />
+          <button @click="onSubmit">Submit</button>
+        </div>
       </div>
     </div>
   </section>
@@ -59,6 +63,23 @@ export default {
 @import '~assets/variables';
 
 .map{
-  height: 60vh;
+  height: 62vh;
+}
+
+.content {
+  h1, p, form, .buttonWrapper {
+    padding: 0 20px;
+  }
+}
+
+.buttonWrapper {
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  position: absolute;
+  width: 100%;
+  bottom: 60px;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #000 100%);
 }
 </style>
