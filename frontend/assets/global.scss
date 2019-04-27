@@ -26,9 +26,10 @@ body {
   margin: 0;
 }
 
-.page-section {
+.page {
   background: $color-background;
   height: calc(100vh - 58px);
+  margin-top: 58px;
 }
 
 h1 {

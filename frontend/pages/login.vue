@@ -1,9 +1,9 @@
 <template>
-    <div clas="page-section" id="page-login">
+    <div class="page noFooter" id="page-login">
         <div id="cover-slide" :class="{ loggingin: loggingIn }"></div>
         <section id="login-section">
             <button v-on:click="loginClick" :class="{ loggingin: loggingIn }">Login</button>
-            <a v-on:click="handleJoin" :class="{ loggingin: loggingIn }">Register</a>
+            <a v-on:click="registerClick" :class="{ loggingin: loggingIn }">Register</a>
             <label for="username" :class="{ loggingin: loggingIn }">Username</label>
             <input type="text" id="username" :class="{ loggingin: loggingIn }" v-model="login.username"/>
             <label for="password" :class="{ loggingin: loggingIn }">Password</label>
@@ -16,7 +16,6 @@
 <script>
 import { authModule, REQUEST, USER } from '../store/auth/methods'
 export default {
-  layout: 'default',
   data() {
       return {
           loggingIn: false,
@@ -27,6 +26,7 @@ export default {
       }
   },
   methods: {
+      registerClick(e) {/* */},
       // Handle our Login Button clicked
       loginClick(e) {
           this.loggingIn = true;
@@ -54,7 +54,7 @@ export default {
 
 #cover-slide {
     width: 100%;
-    height: 60vh;
+    height: 69vh;
     -webkit-transition: height 1s; /* Safari */
     transition: height 1s;
     &.loggingin {
