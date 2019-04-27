@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { authModule, REQUEST, USER } from '../store/auth/methods'
 export default {
   layout: 'default',
   data() {
@@ -31,12 +32,14 @@ export default {
           this.loggingIn = true;
       },
       // Handle submitting our login
-      handleSubmitLogin: function(e) {
-          console.log("User has logged in. {username:"+this.username+",password:"+this.password+"}");
-            // Broadcast our event with our user's credentials
-            this.$emit('user-credentials', {"username":this.username, "password":this.password});
-            // Navigate to our home page
-            this.$router.push({ path: "/" });
+      handleSubmitLogin: async function(e) {
+        await this.$store.dispatch(authModule(REQUEST), { username, password })
+        const user = this.$store.getters(authModule(USER))
+        console.log("User has logged in. {username:"+user.username+"}");
+        // // Broadcast our event with our user's credentials
+        // this.$emit('user-credentials', {username:"+user.username+"}");
+        // Navigate to our home page
+        this.$router.push({ path: "/" });
       }
   }
 }
