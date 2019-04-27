@@ -1,6 +1,5 @@
 import CookieService from '../../core/CookieService'
 import AuthApi from '../../core/api/AuthApi'
-import userTypes from '../../core/userTypes'
 import {
   REQUEST,
   SUCCESS,
@@ -10,8 +9,6 @@ import {
   IS_VALIDATED,
   AUTH_STATUS,
   TYPE,
-  IS_ADMIN,
-  IS_STUDENT,
   USER
 } from './methods'
 
@@ -24,6 +21,7 @@ export const state = () => ({
 export const getters = {
   [IS_VALIDATED]: state => !!state.token,
   [AUTH_STATUS]: state => state.status,
+  [TYPE]: state => state.user.type,
   [USER]: state => state.user
 }
 
