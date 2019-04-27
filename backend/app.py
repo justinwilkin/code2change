@@ -29,7 +29,20 @@ def login():
     if user is None or not user.check_password(data['password']):
         return jsonify({'status':'fail'}), 404
 
-    return jsonify({'token': 'supersecret', 'user':{'name': user.username, 'user_type': user.user_type}}), 200
+    user_interests = []
+    for interest in user.interests:
+        user_interests.append({'id': interest.id, 'name': interest.name})
+
+    res = {
+        'token': 'supersecret',
+        'user': {
+                'name': user.username,
+                'user_type': user.user_type,
+                'interests': user_interests
+            }
+        }
+
+    return jsonify(res), 200
 
 
 @app.route('/event', methods=['GET'])
