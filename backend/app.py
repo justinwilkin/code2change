@@ -76,5 +76,25 @@ class User(db.Model):
         return check_password_hash(self.password_hash, password)
 
 
+class Event(db.Model):
+    __tablename__ = 'event'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))
+    description = db.Column(db.String(200))
+    location = db.Column(db.String(200))
+    url_info = db.Column(db.String(200))
+    geo_fence = db.Column(db.String(200))
+    date = db.Column(db.DateTime)
+    event_type_id = db.Column(db.Integer, db.ForeignKey('eventtype.id'))
+    event_type = db.relationship('eventtype')
+
+
+class EventType(db.Model):
+    __tablename__ = 'eventtype'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))
+    events = db.relationship('event')
+
+
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5000)
