@@ -51,14 +51,15 @@ def get_events():
 
     payload = []
     for e in events:
-        id = e.__dict__["id"]
-        name = e.__dict__["name"]
-        description = e.__dict__["description"]
-        location = e.__dict__["location"]
-        url_info = e.__dict__["url_info"]
-        geo_fence = json.loads(e.__dict__["geo_fence"])
-        date = e.__dict__["date"]
-        payload.append({'id': id, 'name':name,'description':description,'location':location,'url_info':url_info,'geo_fence':geo_fence,'date':date})
+        id = e.id
+        name = e.name
+        description = e.description
+        location = e.location
+        url_info = e.url_info
+        geo_fence = json.loads(e.geo_fence)
+        date = e.date
+        event_type = e.event_type.name
+        payload.append({'id': id, 'name':name,'description':description,'location':location,'url_info':url_info,'geo_fence':geo_fence,'date':date,'event_type':event_type})
  
     return jsonify(payload), 200
 
@@ -174,8 +175,8 @@ class Event(db.Model):
     url_info = db.Column(db.String(200))
     geo_fence = db.Column(db.String(200))
     date = db.Column(db.String(200))
-    event_type_id = db.Column(db.Integer, db.ForeignKey('event_type.id'), 
-        nullable=False)
+    event_type_id = db.Column(db.Integer, db.ForeignKey('event_type.id'), nullable=False)
+    event_type = db.relationship('EventType', backref='event_type', lazy=True)
 
 class EventTypeSchema(Schema):
     id = fields.Int()
