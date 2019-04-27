@@ -1,7 +1,11 @@
 <template>
-    <header>
-        <div class="logo"><span>SIQ</span>INVITE</div>
-    </header>
+    <footer>
+        <ul>
+          <li>test1</li>
+          <li>test2</li>
+          <li>test3</li>
+        </ul>
+    </footer>
 </template>
 
 <script>
@@ -11,8 +15,6 @@ export default {
 <style lang="scss" scoped>
 @import '~assets/variables';
 header {
-      position: fixed;
-      width: 100%;
   height: 58px;
   display: flex;
   align-items: center;
