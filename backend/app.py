@@ -4,6 +4,9 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
+import json
+import dateutil.parser as parser
+
 
 app = Flask(__name__)
 CORS(app)
@@ -37,6 +40,30 @@ def get_events():
 
 @app.route('/event', methods=['POST'])
 def create_event():
+    data = request.get_json()
+
+    event_type = EventType.query.filter_by(name=data['event_type']).first()
+
+    if event_type is None:
+        return jsonify({'status':'fail', 'message': 'Invalid event type'}), 400
+
+    try:
+        date = parser.parse(data['date'])
+    except:
+        return jsonify({'status':'fail', 'message': 'Bad date format'}), 400
+
+    event = Event(
+        name = data['name'],
+        description = data['description'],
+        location = data['location'],
+        url_info = data['url_info'],
+        geo_fence = json.dumps(data['geo_fence']),
+        date = date,
+        event_type_id = event_type.id
+    )
+
+    db.session.add(event)
+    db.session.commit()
     
     return jsonify({'status':'success'}), 201
 
