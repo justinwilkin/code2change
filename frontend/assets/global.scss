@@ -1,0 +1,84 @@
+/***********
+* GLOBAL   *
+***********/
+
+@import './variables.scss';
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-family: 'Lato';
+  font-size: 16px;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  color: $color-white;
+}
+
+body {
+  margin: 0;
+}
+
+.page {
+  background: $color-background;
+  height: calc(100vh - 60px);
+  padding-top: 58px;
+  &.noFooter {
+    height: 100vh;
+  }
+}
+
+h1 {
+  font-size: $font-heading;
+  font-weight: $fontweight-bold;
+}
+
+h2 {
+  font-size: $font-subheading;
+  font-weight: $fontweight-bold;
+}
+
+p {
+  font-size: $font-regular;
+  font-weight: $fontweight-regular;
+  margin: 5px 0 10px;
+}
+
+input {
+  height: 50px;
+   padding-left: 20px;
+  margin-bottom: 25px;
+}
+
+label {
+  font-size: $font-subtitle;
+  color: $color-white;
+  font-weight: $fontweight-bold;
+  margin-bottom: 10px;
+}
+
+button {
+  border: none;
+  border-radius: 2px;
+  color: $color-white;
+  margin-top: 35px;
+  text-align: center;
+  font-size: $font-subheading;
+  padding: 15px;
+    background: $color-primary;
+  &.secondary {
+    background: $color-red;
+  }
+}
+
+a {
+  color: $color-primary;
+}
