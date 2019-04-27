@@ -121,6 +121,10 @@ def gps():
 def get_image(path):
     return send_from_directory('images', path)
 
+interests = db.Table('interests', db.Model.metadata,
+    db.Column('user', db.Integer, db.ForeignKey('user.id')),
+    db.Column('event_type', db.Integer, db.ForeignKey('event_type.id'))
+)
 
 class User(db.Model):
     __tablename__ = 'user'
@@ -128,6 +132,7 @@ class User(db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     user_type = db.Column(db.String(64))
+    interests = db.relationship("EventType", secondary=interests)
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
