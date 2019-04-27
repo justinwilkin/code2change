@@ -1,13 +1,16 @@
 <template>
   <section id="event-details">
-    <div class="content" v-if="!!event">
-      <h1>{{ event.name }}</h1>
+    <div v-if="!!event">
+      <label>Event Name</label>
+      <p>{{ event.name }}</p>
       <label>When</label>
       <p>{{ moment(event.date).format('MMMM Do YYYY, h:mm a') }}</p>
       <label>Location</label>
       <p>{{ event.location }}</p>
       <label>Description</label>
       <p>{{ event.description }}</p>
+      <label>Event Type</label>
+      <p>{{ event.event_type }}</p>
       <label>Info URL</label>
       <p v-if="event.url_info">{{ event.url_info }}</p>
       <p v-else>none</p>
@@ -30,8 +33,4 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/variables';
-
-.content {
-  margin: 0 20px;
-}
 </style>

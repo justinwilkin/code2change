@@ -1,5 +1,5 @@
 <template>
-  <section class="page" id="page-index">
+  <section class="page bodyContent" id="page-index">
     <EventDetails :event="event" />
   </section>
 </template>
@@ -30,14 +30,11 @@ export default {
   async created() {
     await this.$store.dispatch(eventsModule(REQUEST))
     const id = Number(this.$route.params.id)
-    this.event = this.getEventById(id)
+    this.event = this.getEventById(id);
   },
 }
 </script>
 
 <style lang="scss" scoped>
 @import '~assets/variables';
-.content {
-  margin: 0 20px;
-}
 </style>

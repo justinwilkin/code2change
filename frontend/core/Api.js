@@ -29,6 +29,14 @@ export class EventsApi {
     return await axios({
       method: 'get',
       url: `${ENDPOINT}/event`
-    })
+    });
+  }
+
+  static async createEvent(event) {
+    return await axios({
+      method: 'post',
+      url: `${ENDPOINT}/event`,
+      data: event
+    });
   }
 }
