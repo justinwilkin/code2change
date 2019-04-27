@@ -1,8 +1,8 @@
 <template>
     <footer>
         <ul>
-          <li>Events</li>
-          <li>Saved</li>
+          <li><router-link to="/">Events</router-link></li>
+          <li><router-link to="/">Saved</router-link></li>
         </ul>
     </footer>
 </template>

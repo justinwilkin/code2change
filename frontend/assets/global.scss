@@ -49,6 +49,7 @@ h2 {
 p {
   font-size: $font-regular;
   font-weight: $fontweight-regular;
+  margin: 5px 0 10px;
 }
 
 input {
@@ -58,7 +59,7 @@ input {
 }
 
 label {
-  font-size: $font-subheading;
+  font-size: $font-subtitle;
   color: $color-white;
   font-weight: $fontweight-bold;
   margin-bottom: 10px;

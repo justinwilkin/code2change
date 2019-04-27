@@ -1,18 +1,20 @@
 <template>
-  <div class="page" id="page-index">
-    {{ event }}
-  </div>
+  <section class="page" id="page-index">
+    <EventDetails :event="event" />
+  </section>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import GoogleMaps from '@/components/GoogleMaps.vue'
 import { eventsModule, REQUEST, EVENT_BY_ID } from '../../store/events/methods'
+import EventDetails from '../../components/EventDetails'
 
 export default {
   layout: 'withFooter',
   components: {
-    GoogleMaps
+    GoogleMaps,
+    EventDetails
   },
   computed: {
     ...mapGetters({
@@ -34,4 +36,8 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/variables';
+
+.content {
+  margin: 0 20px;
+}
 </style>

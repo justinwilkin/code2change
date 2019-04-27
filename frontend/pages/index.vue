@@ -21,8 +21,6 @@ export default {
   },
   async created() {
     await this.$store.dispatch(eventsModule(REQUEST))
-    console.log(this.$store.getters[eventsModule(EVENTS)])
-    console.log(this.getEventById(1))
   },
 }
 </script>
