@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import * as VueGoogleMaps from 'vue2-google-maps'
- 
+
+ console.log(process.env.keyWord.toString())
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyD8DPDTZUYDzF_XgLXD7JaUUcNcv-xc-nY',
+    key: process.env.keyWord.toString(),
     libraries: 'places',
   },
 })

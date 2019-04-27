@@ -93,6 +93,7 @@ module.exports = {
    ** Environment variables, with loading using Dotenv
    */
   env: {
+    keyWord: process.env.MAPS_API_KEY
     // See https://github.com/motdotla/dotenv
     // baseUrl: process.env.BASE_URL || 'http://localhost:3000',
   }
