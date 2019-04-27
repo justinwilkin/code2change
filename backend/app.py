@@ -64,7 +64,7 @@ def create_event():
         location = data['location'],
         url_info = data['url_info'],
         geo_fence = json.dumps(data['geo_fence']),
-        date = date['date'],
+        date = data['date'],
         event_type_id = event_type.id
     )
 
@@ -88,12 +88,12 @@ def edit_event():
     if event_type is None:
         return jsonify({'status':'fail', 'message': 'Invalid event type'}), 400
 
-    event.name = data['name'],
-    event.description = data['description'],
-    event.location = data['location'],
-    event.url_info = data['url_info'],
-    event.geo_fence = json.dumps(data['geo_fence']),
-    event.date = data['date'],
+    event.name = data['name']
+    event.description = data['description']
+    event.location = data['location']
+    event.url_info = data['url_info']
+    event.geo_fence = json.dumps(data['geo_fence'])
+    event.date = data['date']
     event.event_type_id = event_type.id
     
     db.session.commit()
