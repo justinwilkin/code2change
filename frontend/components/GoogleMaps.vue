@@ -4,8 +4,8 @@
   :zoom="7"
   :options="{styles: styles}"
   map-type-id="roadmap"
-  style="width: 500px; height: 300px"
-  
+  :style="style"
+
 >
   <GmapMarker
     :key="index"
@@ -22,6 +22,15 @@
 import json from '../assets/maps-style.json'
 
 export default {
+  props: {
+    height: String,
+    width: String
+  },
+  computed: {
+    style () {
+      return `width: ${this.width}; height: ${this.height};`
+    }
+  },
   data() {
     return {
       styles: json
