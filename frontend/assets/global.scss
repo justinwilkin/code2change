@@ -30,10 +30,15 @@ body {
 .page {
   background: $color-background;
   height: calc(100vh - 60px);
-  padding-top: 58px;
+  padding: 58px 0 0;
+  overflow-y: scroll;
   &.noFooter {
     height: 100vh;
   }
+}
+
+.bodyContent {
+  padding: 0 20px;
 }
 
 h1 {
@@ -52,10 +57,19 @@ p {
   margin: 5px 0 10px;
 }
 
-input {
-  height: 50px;
-   padding-left: 20px;
+input, textarea {
+  height: 38px;
+   padding-left: 8px;
   margin-bottom: 25px;
+  border: none;
+  background: $color-white;
+  border-radius: 2px;
+  width: 100%;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
 }
 
 label {
@@ -63,16 +77,17 @@ label {
   color: $color-white;
   font-weight: $fontweight-bold;
   margin-bottom: 10px;
+  display: block;
 }
 
 button {
   border: none;
   border-radius: 2px;
   color: $color-white;
-  margin-top: 35px;
   text-align: center;
-  font-size: $font-subheading;
-  padding: 15px;
+  font-size: $font-subtitle;
+  width: 100%;
+  padding: 8px;
     background: $color-primary;
   &.secondary {
     background: $color-red;

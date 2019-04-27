@@ -1,5 +1,5 @@
 <template>
-  <section class="page" id="page-index">
+  <section class="page bodyContent" id="page-index">
     <EventDetails :event="event" />
   </section>
 </template>
@@ -35,7 +35,4 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/variables';
-.content {
-  margin: 0 20px;
-}
 </style>
