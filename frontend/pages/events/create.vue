@@ -40,7 +40,7 @@ export default {
     },
     async onSubmit() {
       await this.$store.dispatch(eventModule(SUBMIT))
-      // this.$router.push({ path: '/' })
+      this.$router.push({ path: '/' })
     }
   },
   computed: {

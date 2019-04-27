@@ -21,7 +21,7 @@ export const state = () => ({
     location: '',
     description: '',
     url_info: '',
-    geo_fence: '',
+    geo_fence: [],
     event_type: ''
   }
 });
