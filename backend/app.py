@@ -6,7 +6,7 @@ from flask_migrate import Migrate
 from werkzeug.security import generate_password_hash, check_password_hash
 import json
 import dateutil.parser as parser
-
+from marshmallow import Schema, fields
 
 app = Flask(__name__)
 CORS(app)
@@ -34,8 +34,19 @@ def login():
 
 @app.route('/event', methods=['GET'])
 def get_events():
-    # get all events
-    return jsonify({'status':'success'}), 200
+    events = db.session.query(Event).all()
+
+    payload = []
+    for e in events:
+        name = e.__dict__["name"]
+        description = e.__dict__["description"]
+        location = e.__dict__["location"]
+        url_info = e.__dict__["url_info"]
+        geo_fence = json.loads(e.__dict__["geo_fence"])
+        date = e.__dict__["date"]
+        payload.append({'name':name,'description':description,'location':location,'url_info':url_info,'geo_fence':geo_fence,'date':date})
+ 
+    return jsonify(payload), 200
 
 
 @app.route('/event', methods=['POST'])
@@ -72,6 +83,14 @@ def create_event():
 def edit_event():
 
     return jsonify({'status':'success'}), 200
+
+
+@app.route('/eventTypes', methods=['GET'])
+def get_event_types():
+    event_types = db.session.query(EventType).all()
+    schema = EventTypeSchema(many=True)
+    payload = schema.dump(event_types)[0]
+    return jsonify(payload), 200
 
 
 @app.route('/gps', methods=['POST'])
@@ -122,6 +141,10 @@ class Event(db.Model):
     date = db.Column(db.DateTime)
     event_type_id = db.Column(db.Integer, db.ForeignKey('event_type.id'), 
         nullable=False)
+
+class EventTypeSchema(Schema):
+    id = fields.Int()
+    name = fields.Str()
 
 
 if __name__ == '__main__':
