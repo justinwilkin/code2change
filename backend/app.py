@@ -47,29 +47,45 @@ def create_event():
     if event_type is None:
         return jsonify({'status':'fail', 'message': 'Invalid event type'}), 400
 
-    try:
-        date = parser.parse(data['date'])
-    except:
-        return jsonify({'status':'fail', 'message': 'Bad date format'}), 400
-
     event = Event(
         name = data['name'],
         description = data['description'],
         location = data['location'],
         url_info = data['url_info'],
         geo_fence = json.dumps(data['geo_fence']),
-        date = date,
+        date = date['date'],
         event_type_id = event_type.id
     )
 
     db.session.add(event)
     db.session.commit()
-    
+
     return jsonify({'status':'success'}), 201
 
 
 @app.route('/event', methods=['PUT'])
 def edit_event():
+    data = request.get_json()
+    
+    event = Event.query.get(data['id'])
+
+    if event is None:
+        return jsonify({'status':'fail', 'message': 'Event id does not exist'}), 400
+
+    event_type = EventType.query.filter_by(name=data['event_type']).first()
+
+    if event_type is None:
+        return jsonify({'status':'fail', 'message': 'Invalid event type'}), 400
+
+    event.name = data['name'],
+    event.description = data['description'],
+    event.location = data['location'],
+    event.url_info = data['url_info'],
+    event.geo_fence = json.dumps(data['geo_fence']),
+    event.date = data['date'],
+    event.event_type_id = event_type.id
+    
+    db.session.commit()
 
     return jsonify({'status':'success'}), 200
 
@@ -119,7 +135,7 @@ class Event(db.Model):
     location = db.Column(db.String(200))
     url_info = db.Column(db.String(200))
     geo_fence = db.Column(db.String(200))
-    date = db.Column(db.DateTime)
+    date = db.Column(db.String(200))
     event_type_id = db.Column(db.Integer, db.ForeignKey('event_type.id'), 
         nullable=False)
 

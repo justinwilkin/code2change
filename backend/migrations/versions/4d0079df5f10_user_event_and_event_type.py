@@ -1,8 +1,8 @@
-"""users, event_types and event
+"""user, event and event_type
 
-Revision ID: 0a2c5c63a418
+Revision ID: 4d0079df5f10
 Revises: 
-Create Date: 2019-04-27 19:20:40.392148
+Create Date: 2019-04-27 22:01:25.081122
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '0a2c5c63a418'
+revision = '4d0079df5f10'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -38,7 +38,7 @@ def upgrade():
     sa.Column('location', sa.String(length=200), nullable=True),
     sa.Column('url_info', sa.String(length=200), nullable=True),
     sa.Column('geo_fence', sa.String(length=200), nullable=True),
-    sa.Column('date', sa.DateTime(), nullable=True),
+    sa.Column('date', sa.String(length=200), nullable=True),
     sa.Column('event_type_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['event_type_id'], ['event_type.id'], ),
     sa.PrimaryKeyConstraint('id')
