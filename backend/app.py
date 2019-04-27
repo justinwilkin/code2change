@@ -26,7 +26,7 @@ def login():
     if user is None or not user.check_password(data['password']):
         return jsonify({'status':'fail'}), 404
 
-    return jsonify({'token': 'supersecret', 'user':{'name': user.username, 'usertype': user.usertype}}), 200
+    return jsonify({'token': 'supersecret', 'user':{'name': user.username, 'user_type': user.user_type}}), 200
 
 
 @app.route('/event', methods=['GET'])
@@ -61,10 +61,11 @@ def get_image(path):
 
 
 class User(db.Model):
+    __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    usertype = db.Column(db.String(64))
+    user_type = db.Column(db.String(64))
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -76,6 +77,13 @@ class User(db.Model):
         return check_password_hash(self.password_hash, password)
 
 
+class EventType(db.Model):
+    __tablename__ = 'event_type'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))
+    events = db.relationship('Event', backref='event', lazy=True)
+
+
 class Event(db.Model):
     __tablename__ = 'event'
     id = db.Column(db.Integer, primary_key=True)
@@ -85,15 +93,8 @@ class Event(db.Model):
     url_info = db.Column(db.String(200))
     geo_fence = db.Column(db.String(200))
     date = db.Column(db.DateTime)
-    event_type_id = db.Column(db.Integer, db.ForeignKey('eventtype.id'))
-    event_type = db.relationship('eventtype')
-
-
-class EventType(db.Model):
-    __tablename__ = 'eventtype'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64))
-    events = db.relationship('event')
+    event_type_id = db.Column(db.Integer, db.ForeignKey('event_type.id'), 
+        nullable=False)
 
 
 if __name__ == '__main__':
