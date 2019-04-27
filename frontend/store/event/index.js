@@ -14,13 +14,16 @@ import {
 } from './methods';
 
 const emptyState = () => ({
-  name: '',
-  date: '',
-  location: '',
-  description: '',
-  url_info: '',
-  geo_fence: [],
-  event_type: ''
+  status: '',
+  event: {
+    name: '',
+    date: '',
+    location: '',
+    description: '',
+    url_info: '',
+    geo_fence: [],
+    event_type: ''
+  }
 });
 
 export const state = () => emptyState();
