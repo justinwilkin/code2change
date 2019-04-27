@@ -2,8 +2,10 @@
     <GmapMap
   :center="{lat:15, lng:10}"
   :zoom="7"
-  map-type-id="terrain"
+  :options="{styles: styles}"
+  map-type-id="roadmap"
   style="width: 500px; height: 300px"
+  
 >
   <GmapMarker
     :key="index"
@@ -17,8 +19,14 @@
 </template>
 
 <script>
-export default {
+import json from '../assets/maps-style.json'
 
+export default {
+  data() {
+    return {
+      styles: json
+    }
+  }
 }
 </script>
 
