@@ -51,6 +51,14 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa'
   ],
+
+  /*
+   ** PWA Manifest 
+   */
+  manifest: {
+    name: 'Siq Invite',
+    lang: 'en'
+  },
   /*
    ** Axios module configuration
    */
@@ -72,7 +80,6 @@ module.exports = {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
       }
