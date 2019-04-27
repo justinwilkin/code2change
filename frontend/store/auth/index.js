@@ -9,7 +9,8 @@ import {
   IS_VALIDATED,
   AUTH_STATUS,
   TYPE,
-  USER
+  USER,
+  USER_NAME
 } from './methods'
 
 export const state = () => ({
@@ -21,8 +22,9 @@ export const state = () => ({
 export const getters = {
   [IS_VALIDATED]: state => !!state.token,
   [AUTH_STATUS]: state => state.status,
-  [TYPE]: state => state.user.type,
-  [USER]: state => state.user
+  [TYPE]: state => state.user.usertype,
+  [USER]: state => state.user,
+  [USER_NAME]: state => state.user.name
 }
 
 export const mutations = {

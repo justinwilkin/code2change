@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const AUTHORIZATION = 'Authorization'
 
-const ENDPOINT = 'http://localhost:5000'
+const ENDPOINT = 'http://ec2-52-63-15-248.ap-southeast-2.compute.amazonaws.com:5000'
 
 export default class AuthApi {
   static setAuthorizationHeader(token) {
@@ -18,7 +18,7 @@ export default class AuthApi {
   static async authenticateUser(loginData) {
     return await axios({
       method: 'post',
-      url: `${ENDPOINT}/users/auth`,
+      url: `${ENDPOINT}/login`,
       data: loginData
     })
   }

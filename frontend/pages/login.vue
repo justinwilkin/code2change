@@ -19,8 +19,8 @@ export default {
   data() {
       return {
           loggingIn: false,
-          username: '',
-          password: ''
+          username: 'barry',
+          password: 'cactus'
       }
   },
   methods: {
@@ -33,9 +33,9 @@ export default {
       },
       // Handle submitting our login
       handleSubmitLogin: async function(e) {
-        await this.$store.dispatch(authModule(REQUEST), { username, password })
-        const user = this.$store.getters(authModule(USER))
-        console.log("User has logged in. {username:"+user.username+"}");
+        await this.$store.dispatch(authModule(REQUEST), { username: this.username, password: this.password })
+        const user = this.$store.getters[authModule(USER)]
+        console.log(`User has logged in. {username: ${user.name}, usertype: ${user.usertype}}`);
         // // Broadcast our event with our user's credentials
         // this.$emit('user-credentials', {username:"+user.username+"}");
         // Navigate to our home page
