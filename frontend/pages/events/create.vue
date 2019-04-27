@@ -5,8 +5,7 @@
       <EventDetailsForm v-if="step === 1" :btn-click="onProgress" />
       <div v-if="step === 2">
         <p>Select 4 points to create a zone for people to receive information in</p>
-        <!-- Map goes here, but is not working -->
-        <!-- <LeafletMaps/> -->
+        <LeafletMaps class="map"/>
         <button @click="onProgress">Review</button>
       </div>
       <div v-if="step === 3">
@@ -29,7 +28,8 @@ export default {
   layout: 'withFooter',
   components: {
     EventDetails,
-    EventDetailsForm
+    EventDetailsForm,
+    LeafletMaps
   },
   data() {
     return {
@@ -57,4 +57,8 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/variables';
+
+.map{
+  height: 60vh;
+}
 </style>

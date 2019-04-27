@@ -1,7 +1,7 @@
  <template>
-  <l-map style="height: 100%; width: 100%" :zoom="zoom" :center="currentLocation" @click='addPoint'>
+  <l-map class="map" :zoom="zoom" :center="currentLocation" @click='addPoint'>
     <l-tile-layer :url="url"></l-tile-layer>
-    <l-polygon :lat-lngs="polygon.latlngs" :color="polygon.color"></l-polygon>
+    <l-polygon :lat-lngs="polygon.latlngs" :color="polygon.color" b></l-polygon>
         <l-marker :lat-lng="currentLocation" ></l-marker>
   </l-map>
 </template>
@@ -43,6 +43,9 @@ export default {
 };
 </script>
  
- <style>
+<style lang="scss" scoped>
+.map{
+height: 100%; width: 100%
+}
 </style>
  
