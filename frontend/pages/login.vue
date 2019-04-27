@@ -54,7 +54,7 @@ export default {
 
 #cover-slide {
     width: 100%;
-    height: 69vh;
+    height: 60vh;
     -webkit-transition: height 1s; /* Safari */
     transition: height 1s;
     &.loggingin {
@@ -63,10 +63,6 @@ export default {
 }
 
 button, a {
-
-  // width: 70vw;
-  // position: relative;
-  // left: 15vw;
   opacity: 1;
   -webkit-transition: opacity 1s; /* Safari */
   transition: opacity 1s;

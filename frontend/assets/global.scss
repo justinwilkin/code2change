@@ -28,8 +28,11 @@ body {
 
 .page {
   background: $color-background;
-  height: calc(100vh - 58px);
+  height: calc(100vh - 60px);
   padding-top: 58px;
+  &.noFooter {
+    height: 100vh;
+  }
 }
 
 h1 {

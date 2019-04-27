@@ -1,9 +1,8 @@
 <template>
     <footer>
         <ul>
-          <li>test1</li>
-          <li>test2</li>
-          <li>test3</li>
+          <li>Events</li>
+          <li>Saved</li>
         </ul>
     </footer>
 </template>
@@ -14,20 +13,22 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import '~assets/variables';
-header {
-  height: 58px;
-  display: flex;
-  align-items: center;
+footer {
+  height: 60px;
   background: $color-background;
   font-weight: $fontweight-bold;
-  font-size: $font-heading;
-  .logo {
-    color: $color-white;
-    text-align: center;
-    width: 100%;
-    span {
-      color: $color-primary;
-    }
+  font-size: $font-regular;
+  color: $color-white;
+  border-top: 1px solid;
+  border-color: $color-darkgray;
+  ul {
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    height: 100%;
   }
 }
 </style>

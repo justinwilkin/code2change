@@ -1,6 +1,6 @@
 <template>
   <div class="page" id="page-index">
-    <GoogleMaps :width="'100vw'" :height="'100vh'" />
+    <GoogleMaps :width="'100%'" :height="'100%'" />
   </div>
 </template>
 
@@ -8,6 +8,7 @@
 import GoogleMaps from '@/components/GoogleMaps.vue'
 
 export default {
+  layout: 'withFooter',
   components: {
     GoogleMaps
   }
