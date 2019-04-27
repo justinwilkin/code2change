@@ -18,7 +18,7 @@ export default {
       polygon: {
         latlngs: [],
         color: 'green'
-      },
+      }
     };
   },
   mounted: function(){
@@ -30,17 +30,15 @@ export default {
       	this.polygon.latlngs = []
       }
       this.polygon.latlngs.push(event.latlng);
-      console.log(this.polygon.latlngs)
-        },
-        geolocation(){
-                  navigator.geolocation.getCurrentPosition((position) => {
+    },
+    geolocation(){
+      navigator.geolocation.getCurrentPosition((position) => {
         this.currentLocation = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-
       });
-        }
+    }
 	}
 };
 </script>

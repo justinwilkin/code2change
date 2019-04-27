@@ -1,7 +1,7 @@
 <template>
   <div class="page" id="page-index">
     <!-- <GoogleMaps :width="'100%'" :height="'100%'" /> -->
-    <LeafletMaps />
+    <LeafletMaps/>
   </div>
 </template>
 
@@ -14,7 +14,6 @@ import { eventsModule, REQUEST, EVENTS, EVENT_BY_ID } from '../store/events/meth
 export default {
   layout: 'withFooter',
   components: {
-    // GoogleMaps
     LeafletMaps
   },
   computed: {

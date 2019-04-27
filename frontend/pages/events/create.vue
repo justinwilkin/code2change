@@ -5,7 +5,8 @@
       <EventDetailsForm v-if="step === 1" :btn-click="onProgress" />
       <div v-if="step === 2">
         <p>Select 4 points to create a zone for people to receive information in</p>
-        <!-- Map goes here -->
+        <!-- Map goes here, but is not working -->
+        <!-- <LeafletMaps/> -->
         <button @click="onProgress">Review</button>
       </div>
       <div v-if="step === 3">
@@ -22,6 +23,7 @@ import { mapGetters } from 'vuex'
 import { eventModule, NAME, DESCRIPTION, LOCATION, DATE, TYPE, URL_INFO, GEO_FENCE, EVENT, SUBMIT } from '../../store/event/methods'
 import EventDetails from '../../components/EventDetails'
 import EventDetailsForm from '../../components/EventDetailsForm'
+import LeafletMaps from '@/components/LeafletMaps.vue'
 
 export default {
   layout: 'withFooter',
