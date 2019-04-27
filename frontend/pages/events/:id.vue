@@ -1,13 +1,13 @@
 <template>
   <div class="page" id="page-index">
-    <GoogleMaps :width="'100%'" :height="'100%'" />
+    {{ event }}
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import GoogleMaps from '@/components/GoogleMaps.vue'
-import { eventsModule, REQUEST, EVENTS, EVENT_BY_ID } from '../store/events/methods'
+import { eventsModule, REQUEST, EVENT_BY_ID } from '../../store/events/methods'
 
 export default {
   layout: 'withFooter',
@@ -17,12 +17,17 @@ export default {
   computed: {
     ...mapGetters({
       getEventById: eventsModule(EVENT_BY_ID)
-    })
+    }),
+  },
+  data() {
+    return {
+      event: null
+    }
   },
   async created() {
     await this.$store.dispatch(eventsModule(REQUEST))
-    console.log(this.$store.getters[eventsModule(EVENTS)])
-    console.log(this.getEventById(1))
+    const id = Number(this.$route.params.id)
+    this.event = this.getEventById(id)
   },
 }
 </script>
