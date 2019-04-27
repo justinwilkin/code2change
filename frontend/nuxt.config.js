@@ -41,7 +41,7 @@ module.exports = {
    ** Plugins to load before mounting the App
    */
   plugins: [
-  ],
+    { src: "~/plugins/main.js", ssr: true }   ],
 
   /*
    ** Nuxt.js modules
@@ -73,6 +73,8 @@ module.exports = {
     /*
      ** You can extend webpack config here
      */
+    transpile: [/^vue2-google-maps($|\/)/],
+
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
@@ -80,9 +82,10 @@ module.exports = {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
-          exclude: /(node_modules)/
+          exclude: /(node_modules)/,
         })
       }
+      
     }
   },
 
