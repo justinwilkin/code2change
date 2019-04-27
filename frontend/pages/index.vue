@@ -1,14 +1,17 @@
 <template>
   <div id="page-index">
-    <section class="section-container">
-      my name is jeff
-    </section>
+    <Header />
   </div>
 </template>
 
 <script>
+import Header from '@/components/Header.vue'
+
 export default {
-  layout: 'default'
+  layout: 'default',
+  components: {
+    Header
+  }
 }
 </script>
 
