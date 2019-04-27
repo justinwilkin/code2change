@@ -28,7 +28,7 @@ export default {
   async created() {
     await this.$store.dispatch(eventsModule(REQUEST))
     const id = Number(this.$route.params.id)
-    this.event = this.getEventById(id)
+    this.event = this.getEventById(id);
   },
 }
 </script>
