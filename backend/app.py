@@ -51,13 +51,14 @@ def get_events():
 
     payload = []
     for e in events:
+        id = e.__dict__["id"]
         name = e.__dict__["name"]
         description = e.__dict__["description"]
         location = e.__dict__["location"]
         url_info = e.__dict__["url_info"]
         geo_fence = json.loads(e.__dict__["geo_fence"])
         date = e.__dict__["date"]
-        payload.append({'name':name,'description':description,'location':location,'url_info':url_info,'geo_fence':geo_fence,'date':date})
+        payload.append({'id': id, 'name':name,'description':description,'location':location,'url_info':url_info,'geo_fence':geo_fence,'date':date})
  
     return jsonify(payload), 200
 
