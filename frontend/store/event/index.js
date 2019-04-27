@@ -13,18 +13,17 @@ import {
   ERROR
 } from './methods';
 
-export const state = () => ({
-  status: '',
-  event: {
-    name: '',
-    date: '',
-    location: '',
-    description: '',
-    url_info: '',
-    geo_fence: [],
-    event_type: ''
-  }
+const emptyState = () => ({
+  name: '',
+  date: '',
+  location: '',
+  description: '',
+  url_info: '',
+  geo_fence: [],
+  event_type: ''
 });
+
+export const state = () => emptyState();
 
 export const getters = {
   [EVENT]: state => state.event,
@@ -67,7 +66,7 @@ export const mutations = {
     state.status = 'loading';
   },
   [SUCCESS]: state => {
-    state.status = 'success';
+    state = emptyState();
   },
   [ERROR]: state => {
     state.status = 'error';
