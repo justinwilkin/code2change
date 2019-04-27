@@ -1,13 +1,11 @@
 <template>
   <div class="page" id="page-index">
-    <!-- <GoogleMaps :width="'100%'" :height="'100%'" /> -->
     <LeafletMaps/>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-// import GoogleMaps from '@/components/GoogleMaps.vue'
 import LeafletMaps from '@/components/LeafletMaps.vue'
 import { eventsModule, REQUEST, EVENTS, EVENT_BY_ID } from '../store/events/methods'
 

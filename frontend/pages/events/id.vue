@@ -6,14 +6,12 @@
 
 <script>
 import { mapGetters } from 'vuex'
-// import GoogleMaps from '@/components/GoogleMaps.vue'
 import LeafletMaps from '@/components/LeafletMaps.vue'
 import { eventsModule, REQUEST, EVENT_BY_ID } from '../../store/events/methods'
 import EventDetails from '../../components/EventDetails'
 export default {
   layout: 'withFooter',
   components: {
-    // GoogleMaps,
     LeafletMaps,
     EventDetails
   },
