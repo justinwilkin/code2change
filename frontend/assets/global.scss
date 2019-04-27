@@ -26,6 +26,11 @@ body {
   margin: 0;
 }
 
+.page-section {
+  background: $color-background;
+  height: calc(100vh - 58px);
+}
+
 h1 {
   font-size: $font-heading;
   font-weight: $fontweight-bold;
@@ -39,4 +44,35 @@ h2 {
 p {
   font-size: $font-regular;
   font-weight: $fontweight-regular;
+}
+
+input {
+  height: 50px;
+   padding-left: 20px;
+  margin-bottom: 25px;
+}
+
+label {
+  font-size: $font-subheading;
+  color: $color-white;
+  font-weight: $fontweight-bold;
+  margin-bottom: 10px;
+}
+
+button {
+  border: none;
+  border-radius: 2px;
+  color: $color-white;
+  margin-top: 35px;
+  text-align: center;
+  font-size: $font-subheading;
+  padding: 15px;
+    background: $color-primary;
+  &.secondary {
+    background: $color-red;
+  }
+}
+
+a {
+  color: $color-primary;
 }
