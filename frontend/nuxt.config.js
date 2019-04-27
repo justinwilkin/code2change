@@ -51,6 +51,14 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa'
   ],
+
+  /*
+   ** PWA Manifest 
+   */
+  manifest: {
+    name: 'Siq Invite',
+    lang: 'en'
+  },
   /*
    ** Axios module configuration
    */
