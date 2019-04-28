@@ -6,11 +6,6 @@ export const mutations = {}
 
 export const actions = {
   nuxtServerInit({ dispatch }, { req }) {
-    const cookie = req.headers.cookie
-    if (cookie) {
-      authModule
-      dispatch(authModule(VALIDATE_COOKIE), { cookie })
-    }
   }
 }
 
