@@ -16,7 +16,7 @@ export default {
       currentLocation: {lat:0,lng:0},
       url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
       zoom: 17,
-      center: [0, 0],
+      center: [-33.865143, 151.209900],
       markerLatLng: [0, 0],
       polygon: {
         latlngs: [],
