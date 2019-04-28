@@ -1,6 +1,6 @@
 <template>
   <div class="page" id="page-index">
-    <LeafletMaps/>
+    <LeafletMapsDisplay v-if="events.length > 0" :events="events" />
     <div class="button-wrapper">
      <button class="button circle plus" @click="btnClick" />
     </div>
@@ -9,18 +9,20 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import LeafletMaps from '@/components/LeafletMaps.vue'
+import LeafletMapsDisplay from '@/components/LeafletMapsDisplay'
 import { eventsModule, REQUEST, EVENTS, EVENT_BY_ID } from '../store/events/methods'
 
 export default {
   layout: 'withFooter',
   components: {
-    LeafletMaps
+    LeafletMapsDisplay
   },
   computed: {
-    ...mapGetters({
-      getEventById: eventsModule(EVENT_BY_ID)
-    })
+    events: {
+      get() {
+        return this.$store.getters[eventsModule(EVENTS)]
+      },
+    }
   },
   methods: {
     btnClick() {

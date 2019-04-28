@@ -6,13 +6,13 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import LeafletMaps from '@/components/LeafletMaps.vue'
+import LeafletMapsDisplay from '@/components/LeafletMapsDisplay'
 import { eventsModule, REQUEST, EVENT_BY_ID } from '../../store/events/methods'
 import EventDetails from '../../components/EventDetails'
 export default {
   layout: 'withFooter',
   components: {
-    LeafletMaps,
+    LeafletMapsDisplay,
     EventDetails
   },
   computed: {

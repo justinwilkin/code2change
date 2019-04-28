@@ -8,6 +8,9 @@
 
  <script>
 export default {
+  props: {
+    addFence: Function
+  },
   data () {
     return {
       currentLocation: {lat:0,lng:0},
@@ -30,7 +33,7 @@ export default {
       	this.polygon.latlngs = []
       }
       this.polygon.latlngs.push(event.latlng);
-      this.$emit('map-coords', this.polygon.latlngs)
+      this.addFence(this.polygon.latlngs);
     },
     geolocation(){
       navigator.geolocation.getCurrentPosition((position) => {

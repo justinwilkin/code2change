@@ -5,7 +5,9 @@
       <EventDetailsForm v-if="step === 1" :btn-click="onProgress" />
       <div v-if="step === 2">
         <p>Select 4 points to create a zone for people to receive information in</p>
-        <div class="map"><LeafletMaps v-on:map-coords="sendCoords"/></div>
+        <div class="map">
+          <LeafletMapsDraw :addFence="addFence" />
+        </div>
         <div class="buttonWrapper">
           <button @click="onProgress">Review</button>
         </div>
@@ -26,14 +28,14 @@ import { mapGetters } from 'vuex'
 import { eventModule, NAME, DESCRIPTION, LOCATION, DATE, TYPE, URL_INFO, GEO_FENCE, EVENT, SUBMIT } from '../../store/event/methods'
 import EventDetails from '../../components/EventDetails'
 import EventDetailsForm from '../../components/EventDetailsForm'
-import LeafletMaps from '@/components/LeafletMaps.vue'
+import LeafletMapsDraw from '@/components/LeafletMapsDraw'
 
 export default {
   layout: 'withFooter',
   components: {
     EventDetails,
     EventDetailsForm,
-    LeafletMaps
+    LeafletMapsDraw
   },
   data() {
     return {
@@ -44,8 +46,9 @@ export default {
     onProgress() {
       this.step = this.step + 1
     },
-    sendCoords(coords){
+    addFence(coords){
       if(coords.length==4){
+        console.log(coords)
         this.$store.commit(eventModule(GEO_FENCE), coords)
       }
     },
