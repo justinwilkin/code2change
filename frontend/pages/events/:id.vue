@@ -1,6 +1,6 @@
 <template>
-  <section class="page bodyContent" id="page-index">
-    <EventDetails :event="event" />
+  <section class="page" id="page-index">
+    <EventDetails class="bodyContent" :event="event" />
   </section>
 </template>
 

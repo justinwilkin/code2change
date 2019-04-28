@@ -4,7 +4,7 @@
       <label>Event Name</label>
       <p>{{ event.name }}</p>
       <label>When</label>
-      <p>{{ moment(event.date).format('MMMM Do YYYY, h:mm a') }}</p>
+      <p>{{ getFormattedDate(event) }}</p>
       <label>Location</label>
       <p>{{ event.location }}</p>
       <label>Description</label>
@@ -26,7 +26,13 @@ export default {
     event: Object
   },
   methods: {
-    moment: moment
+    moment: moment,
+    getFormattedDate(eventCopy) {
+      const date = moment(eventCopy.date)
+      if (date.isValid())
+        return date.format('MMMM Do YYYY, h:mm a')
+      return eventCopy.date
+    }
   }
 }
 </script>
