@@ -9,7 +9,16 @@
     <label class="required">Date</label>
     <input type="text" v-model="date"/>
     <label class="required">Event Type</label>
-    <input type="text" v-model="type"/>
+    <select v-model="type">
+      <option disabled value="">Please select an event type</option>
+      <option value="Music">Music</option>
+      <option value="Free">Free</option>
+      <option value="LAN Party">LAN Party</option>
+      <option value="Food Markets">Food Markets</option>
+      <option value="Shopping">Shopping</option>
+      <option value="PSA">Public Service Announcement</option>
+      <option value="Sports">Sports</option>
+    </select>
     <label>Info URL (optional)</label>
     <input type="text" v-model="url_info"/>
     <button @click="btnClick">Next</button>
