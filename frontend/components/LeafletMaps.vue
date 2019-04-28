@@ -30,6 +30,7 @@ export default {
       	this.polygon.latlngs = []
       }
       this.polygon.latlngs.push(event.latlng);
+      this.$emit('map-coords', this.polygon.latlngs)
     },
     geolocation(){
       navigator.geolocation.getCurrentPosition((position) => {
