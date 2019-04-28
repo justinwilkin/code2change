@@ -9,6 +9,8 @@
 </template>
 
  <script>
+import randomColor from 'randomcolor'
+
 export default {
   props: {
     events: Array
@@ -28,11 +30,14 @@ export default {
   },
   methods: {
     getPolygons() {
-      const test = this.events.map(event => ({
+      const test = this.events.map(event => {
+        const color = randomColor({ luminosity: 'dark' });
+        return {
           latlngs: event.geo_fence,
-          color: 'green',
+          color: color,
           id: event.id
-        }))
+        }
+      })
         return test
     },
     polygonClick(id) {

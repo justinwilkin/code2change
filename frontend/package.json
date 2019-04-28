@@ -22,6 +22,7 @@
     "nuxt": "^2.3.4",
     "nuxt-leaflet": "0.0.18",
     "vue-sweetalert2": "^1.6.4",
+    "randomcolor": "^0.5.4",
     "vue2-google-maps": "^0.10.6",
     "vuetify": "^1.5.9"
   },
