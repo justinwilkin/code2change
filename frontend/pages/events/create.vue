@@ -5,7 +5,7 @@
       <EventDetailsForm v-if="step === 1" :btn-click="onProgress" />
       <div v-if="step === 2">
         <p>Select 4 points to create a zone for people to receive information in</p>
-        <LeafletMaps class="map" v-on:map-coords="sendCoords"/>
+        <div class="map"><LeafletMaps v-on:map-coords="sendCoords"/></div>
         <div class="buttonWrapper">
           <button @click="onProgress">Review</button>
         </div>
@@ -48,7 +48,6 @@ export default {
       if(coords.length==4){
         this.$store.commit(eventModule(GEO_FENCE), coords)
       }
-      console.log(coords,"wow")
     },
     async onSubmit() {
       await this.$store.dispatch(eventModule(SUBMIT))
@@ -69,7 +68,8 @@ export default {
 @import '~assets/variables';
 
 .map{
-  height: 62vh;
+  height: calc(100vh - 219px);
+
 }
 
 .content {
@@ -79,6 +79,7 @@ export default {
 }
 
 .buttonWrapper {
+  pointer-events: none;
   display: flex;
   align-items: center;
   z-index: 1000;
