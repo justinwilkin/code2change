@@ -51,6 +51,10 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     'nuxt-leaflet',
+    [
+      'vue-sweetalert2/nuxt',
+      {confirmButtonColor: '#41b882'}
+    ]
   ],
 
   /*

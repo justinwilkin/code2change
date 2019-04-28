@@ -2,13 +2,30 @@
     <footer>
         <ul>
           <li><router-link to="/">Events</router-link></li>
-          <li><router-link to="/">Saved</router-link></li>
+          <li @click="simulateNotification()">Saved</li>
         </ul>
     </footer>
 </template>
 
 <script>
+import Swal from 'sweetalert2'
+
 export default {
+  methods: {
+    simulateNotification() {
+      Swal.fire({
+        position: 'top-end',
+        title: '<b>Neerby Event</b>',
+        html:
+          '<b>Arts and Culture</b> <br /> Experience local art and culture. <br/>' +
+          'George Street - happening now',
+        showConfirmButton: false,
+        showCancelButton: false,
+        showCloseButton: true,
+        timer: 6500
+      })
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
