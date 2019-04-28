@@ -29,7 +29,7 @@ export default {
       this.$router.push({ path: '/events/create' })
     }
   },
-  async created() {
+  async mounted() {
     await this.$store.dispatch(eventsModule(REQUEST))
   },
 }

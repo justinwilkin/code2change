@@ -33,7 +33,6 @@ export default {
           color: 'green',
           id: event.id
         }))
-        console.log(test)
         return test
     },
     polygonClick(id) {

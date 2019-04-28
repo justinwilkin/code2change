@@ -13,6 +13,8 @@ import {
   ERROR
 } from './methods';
 
+import { eventsModule, REQUEST } from '../events/methods'
+
 const emptyState = () => ({
   status: '',
   event: {

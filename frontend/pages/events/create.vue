@@ -48,7 +48,6 @@ export default {
     },
     addFence(coords){
       if(coords.length==4){
-        console.log(coords)
         this.$store.commit(eventModule(GEO_FENCE), coords)
       }
     },
@@ -91,5 +90,8 @@ export default {
   bottom: 60px;
   height: 100px;
   background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #000 100%);
+  button {
+    pointer-events: all;
+  }
 }
 </style>
